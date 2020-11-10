@@ -1,0 +1,25 @@
+{
+  "name": "@builderx/utils",
+  "version": "0.1.7",
+  "description": "Center wrapper for components in BuilderX (https://builderx.io)",
+  "main": "dist/index.js",
+  "repository": "https://github.com/GeekyAnts/builderX-components",
+  "author": "GeekyAnts",
+  "license": "MIT",
+  "scripts": {
+    "compile": "rm -rf dist/* && babel . --out-dir dist --ignore node_modules,dist --source-maps "
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.3",
+    "@babel/core": "^7.10.3",
+    "babel-preset-react-native": "^4.0.0",
+    "metro-react-native-babel-preset": "^0.59.0"
+  },
+  "peerDependencies": {
+    "react": "^16.3.1",
+    "react-native": "^0.55.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

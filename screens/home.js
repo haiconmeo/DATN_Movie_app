@@ -5,6 +5,7 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch,useSelector} from 'react-redux';
 import Axios from "axios";
+
 import PropTypes from 'prop-types';
 // import { userAction } from "../_action";
 import {
@@ -24,12 +25,13 @@ import {
 
 console.disableYellowBox = true;
 
-const Home = (props) => {
-  const {propName} = props;
-  
+const Home = (props: Props) => {
+  const {navigation} = props;
+  const [value, onChangeText] = useState();
   const userrr = useSelector(state=>state.authentication.user);
   console.log("user_home",userrr)
-  const [gallery, setgallery] = useState([])
+  const [gallery, setgallery] = useState([]);
+  const [movie_new, setmovie_new] = useState([]);
   function list_table(listProfile) {
     var result = [];
     var i;
@@ -55,7 +57,7 @@ const Home = (props) => {
  
     var next= userrr.user.id
     console.log("id",next)
-    var callAPI= "https://glacial-stream-12620.herokuapp.com/api/recommend/"+next
+    var callAPI= "http://192.168.1.3:8000/api/recommend/"+next
  
     try {
       const data = await Axios.get(
@@ -70,9 +72,29 @@ const Home = (props) => {
       console.log(e)
     }
   }
+
+  const getlistnew = async () => {
+ 
+  
+    var callAPI= "http://192.168.1.3:8000/api/movie_new"
+ 
+    try {
+      const data = await Axios.get(
+        callAPI
+      );
+      
+      setmovie_new(list_table(data.data));
+      console.log("gallery",gallery)
+    }
+    catch (e) {
+      console.log("dmm ")
+      console.log(e)
+    }
+  }
   useEffect(() => {
 
-    getlistProfile()
+    getlistProfile(),
+    getlistnew()
 
   },[]);
   const [background, setBackground] = useState({
@@ -143,12 +165,15 @@ const Home = (props) => {
                     placeholder="Search Movies"
                     placeholderTextColor="rgba(255,255,255,0.3)"
                     style={styles.SearchBox}
+                    onChangeText={text => onChangeText(text)}
+                    value={value}
                   />
                   <Ionicons
                     name="md-search"
                     size={22}
                     color="rgba(255,255,255,0.3)"
                     style={styles.searchBoxIcon}
+                    onPress={() => navigation.navigate('Home',{ screen: 'search',value })}
                   />
                 </View>
                 <Text
@@ -159,7 +184,7 @@ const Home = (props) => {
                     marginLeft: 10,
                     marginVertical: 10,
                   }}>
-                  Top Picks this Week
+                  Recommend for you
                 </Text>
                 <View style={styles.carouselContainerView}>
                   <Carousel
@@ -207,7 +232,7 @@ const Home = (props) => {
               marginBottom: 24,
               marginTop: 0,
             }}>
-            Continue Watching
+            Top Movies
           </Text>
           <ImageBackground
             source={{
@@ -242,7 +267,7 @@ const Home = (props) => {
               marginTop: 36,
             }}>
             <Text style={{ color: '#fff', fontSize: 24, fontWeight: 'bold' }}>
-              My List
+              New Movie
             </Text>
             <Text style={{ color: '#fff', fontSize: 14, fontWeight: 'normal' }}>
               View All
@@ -251,7 +276,7 @@ const Home = (props) => {
 
           <FlatList
             style={{ marginBottom: 30 }}
-            data={gallery}
+            data={movie_new}
             horizontal={true}
             renderItem={({ item }) => {
               return (

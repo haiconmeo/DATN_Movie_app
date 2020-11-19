@@ -14,7 +14,7 @@ import Settings from './screens/setting';
 const Tab = createMaterialBottomTabNavigator();
 
 const Main = (props: Props) => {
-
+  const { navigation } = props;
   return (
     
 

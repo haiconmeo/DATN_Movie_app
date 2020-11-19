@@ -2,19 +2,44 @@ import React, { Component } from "react";
 import { useState, useEffect } from "react";
 import { StyleSheet, View, StatusBar, Text, TouchableOpacity, ImageBackground, TextInput, ScrollView, Dimensions } from "react-native";
 import HeaderX from "../components/HeaderX";
+import {useDispatch,useSelector} from 'react-redux'
 import Svg, { Ellipse } from "react-native-svg";
 import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
+import Axios from "axios";
+
 function Settings(props) {
+  async function get_profile(pk){
+    
+    var callAPI= "http://192.168.1.3:8000/api/auth/profile_ID/"+pk
+    const userList = await Axios.get(callAPI)
+    .then((response) => {
+      if(response.status === 200){
+         return (JSON.stringify(response.data))
+      }
+     })
+     .catch((error) => {
+       alert(error.response.data)
+     })
+}
+  const user = useSelector(state=>state.authentication.user);
+  // const profile = profile_detail(user.id)
+  // console.log("user trong setting",profile)
   const { height } = Dimensions.get('window');
   const [inputs, setInputs] = useState({
     Firstname: '',
     LastName: '',
     Email: '',
     PhoneNumber: '',
-    Cmnd: ''
-
+    Cmnd: '',
+    Email:'',
+    
   });
+  useEffect(()=>{
+    const profile  =  get_profile(1)
+
+    console.log("user trong setting",profile.user);
+  },[]);
   const [state, setState] = useState({
     screenHeight: 0,
   })
@@ -47,7 +72,21 @@ function Settings(props) {
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
-                    placeholder="Username"
+                    value="Username"
+                    placeholderTextColor="rgba(255,255,255,1)"
+                    secureTextEntry={false}
+                    style={styles.usernameInput}
+                   
+
+                  ></TextInput>
+                </View>
+                <View style={styles.username}>
+                  <EvilIconsIcon
+                    name="user"
+                    style={styles.icon22}
+                  ></EvilIconsIcon>
+                  <TextInput
+                    value="Username@manh.com"
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
@@ -61,21 +100,7 @@ function Settings(props) {
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
-                    placeholder="Username"
-                    placeholderTextColor="rgba(255,255,255,1)"
-                    secureTextEntry={false}
-                    style={styles.usernameInput}
-                    onChangeText={(text2) => setInputs(inputs => ({ ...inputs, Firstname: text2 }))}
-
-                  ></TextInput>
-                </View>
-                <View style={styles.username}>
-                  <EvilIconsIcon
-                    name="user"
-                    style={styles.icon22}
-                  ></EvilIconsIcon>
-                  <TextInput
-                    placeholder="Username"
+                    placeholder="Firstname"
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
@@ -146,7 +171,7 @@ function Settings(props) {
                 // onPress={handleSubmit}
                 style={styles.button}
               >
-                <Text style={styles.text2}>Login</Text>
+                <Text style={styles.text2}>Edit Profile</Text>
               </TouchableOpacity>
             </View>
           </ImageBackground>

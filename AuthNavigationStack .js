@@ -1,7 +1,8 @@
 import Login from './screens/login.js';
 import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Main from './Main'
+import Main from './Main';
+import Search from './screens/search';
 const Stack = createStackNavigator();
 
 const AuthNavigationStack = () => {
@@ -15,6 +16,7 @@ const AuthNavigationStack = () => {
        }}
      />
      <Stack.Screen name='Home' component={Main} />
+     <Stack.Screen name='search' component={Search} />
      
    </Stack.Navigator>
  );

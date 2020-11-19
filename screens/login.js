@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import  { useState,useEffect  } from "react";
-import { View, Text, TouchableOpacity, TextInput, StyleSheet,StatusBar ,ImageBackground } from 'react-native'
+import { View, Text, TouchableOpacity, TextInput, StyleSheet,StatusBar ,ImageBackground ,ScrollView} from 'react-native'
 import {useDispatch,useSelector} from 'react-redux'
 import { userAction } from "../_action";
 import IoniconsIcon from "react-native-vector-icons/Ionicons";
@@ -46,6 +46,7 @@ const Login = (props: Props) =>{
 
 
       return (
+        <ScrollView style={{ backgroundColor: '#000' }}>
         <View style={styles.root}>
           <StatusBar barStyle="light-content" backgroundColor="rgba(0,0,0,0)" />
           <View style={styles.background}>
@@ -117,6 +118,7 @@ const Login = (props: Props) =>{
             </ImageBackground>
           </View>
         </View>
+        </ScrollView>
       );
     }
     

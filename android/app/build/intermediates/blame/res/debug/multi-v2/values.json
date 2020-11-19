@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\DATN\\MovieApp\\Movie_app\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "D:\\DATN\\Movie_app\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\ADMIN\\.gradle\\caches\\transforms-2\\files-2.1\\5d77379c9ca63ec4e4760340c9775882\\recyclerview-1.1.0\\res\\values\\values.xml",
@@ -61,23 +61,6 @@
                     }
                 },
                 {
-                    "source": "D:\\DATN\\MovieApp\\Movie_app\\android\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "51",
-                        "endOffsets": "63"
-                    },
-                    "to": {
-                        "startLines": "670",
-                        "startColumns": "4",
-                        "startOffsets": "42938",
-                        "endColumns": "51",
-                        "endOffsets": "42985"
-                    }
-                },
-                {
                     "source": "C:\\Users\\ADMIN\\.gradle\\caches\\transforms-2\\files-2.1\\992899a9ab42347a7d95537be422c459\\jetified-flipper-0.33.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -92,6 +75,23 @@
                         "startOffsets": "37053",
                         "endColumns": "56",
                         "endOffsets": "37105"
+                    }
+                },
+                {
+                    "source": "D:\\DATN\\Movie_app\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "16",
+                        "endColumns": "51",
+                        "endOffsets": "63"
+                    },
+                    "to": {
+                        "startLines": "670",
+                        "startColumns": "4",
+                        "startOffsets": "42938",
+                        "endColumns": "51",
+                        "endOffsets": "42985"
                     }
                 },
                 {
@@ -111,6 +111,42 @@
                         "endLines": "572,614,5870,5874",
                         "endColumns": "56,63,24,24",
                         "endOffsets": "37162,39228,376973,377122"
+                    }
+                },
+                {
+                    "source": "D:\\DATN\\Movie_app\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "54",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "231"
+                    },
+                    "to": {
+                        "startLines": "799",
+                        "startColumns": "4",
+                        "startOffsets": "58326",
+                        "endLines": "802",
+                        "endColumns": "12",
+                        "endOffsets": "58503"
+                    }
+                },
+                {
+                    "source": "D:\\DATN\\Movie_app\\android\\app\\build\\generated\\res\\resValues\\debug\\values\\gradleResValues.xml",
+                    "from": {
+                        "startLines": "6,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "162,227",
+                        "endColumns": "63,68",
+                        "endOffsets": "221,291"
+                    },
+                    "to": {
+                        "startLines": "634,635",
+                        "startColumns": "4,4",
+                        "startOffsets": "40419,40483",
+                        "endColumns": "63,68",
+                        "endOffsets": "40478,40547"
                     }
                 },
                 {
@@ -188,23 +224,6 @@
                     }
                 },
                 {
-                    "source": "D:\\DATN\\MovieApp\\Movie_app\\android\\app\\build\\generated\\res\\resValues\\debug\\values\\gradleResValues.xml",
-                    "from": {
-                        "startLines": "6,7",
-                        "startColumns": "4,4",
-                        "startOffsets": "162,227",
-                        "endColumns": "63,68",
-                        "endOffsets": "221,291"
-                    },
-                    "to": {
-                        "startLines": "634,635",
-                        "startColumns": "4,4",
-                        "startOffsets": "40419,40483",
-                        "endColumns": "63,68",
-                        "endOffsets": "40478,40547"
-                    }
-                },
-                {
                     "source": "C:\\Users\\ADMIN\\.gradle\\caches\\transforms-2\\files-2.1\\2ffc3f7af1dc5a00ce26b098f1fd2361\\jetified-appcompat-resources-1.1.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,29,36,47,74",
@@ -278,25 +297,6 @@
                         "endLines": "178,179,283,284,285,286,287,288,289,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,526,527,528,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,577,578,591,592,593,594,595,596,597,598,599,600,604,637,773,3107,3111,3112,3116,3117,3679,3680,5568,5828,5860,6050,6057",
                         "endColumns": "68,62,69,67,71,69,60,73,72,60,60,61,63,61,60,67,99,59,65,72,68,56,51,61,71,75,64,58,58,59,59,59,59,59,59,59,59,59,59,58,59,59,59,59,59,59,59,59,59,59,58,59,59,58,58,58,58,58,58,34,34,54,62,54,57,56,49,60,56,33,34,34,69,70,116,12,109,12,128,71,66,24,24,24,24,24",
                         "endOffsets": "11298,11361,18431,18499,18571,18641,18702,18776,18849,32991,33052,33114,33178,33240,33301,33369,33469,33529,33595,33668,33737,33794,33846,33908,34498,34574,34639,34749,34808,34868,34928,34988,35048,35108,35168,35228,35288,35348,35408,35467,35527,35587,35647,35707,35767,35827,35887,35947,36007,36067,36126,36186,36246,36305,36364,36423,36482,36541,36600,37384,37419,38068,38131,38186,38244,38301,38351,38412,38469,38503,38538,38716,40674,56515,211355,211556,211666,211867,211996,251545,251612,359566,374518,376583,384897,385274"
-                    }
-                },
-                {
-                    "source": "D:\\DATN\\MovieApp\\Movie_app\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3",
-                        "startColumns": "4",
-                        "startOffsets": "54",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "231"
-                    },
-                    "to": {
-                        "startLines": "799",
-                        "startColumns": "4",
-                        "startOffsets": "58326",
-                        "endLines": "802",
-                        "endColumns": "12",
-                        "endOffsets": "58503"
                     }
                 }
             ]

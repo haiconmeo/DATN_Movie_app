@@ -14,24 +14,39 @@ function login(username,password){
         body:JSON.stringify({username,password})
     };
 
-    return fetch("https://glacial-stream-12620.herokuapp.com/api/auth/login/",requestOptions)
+    return fetch("http://192.168.1.3:8000/api/auth/login/",requestOptions)
     .then(handleResponse)
     .then(user=>{
         console.log("oke auth")
-        AsyncStorage.setItem('user', JSON.stringify(user));
-        
+        // AsyncStorage.setItem('user123456', JSON.stringify(user));
+        const saveUserId = async userId => {
+            try {
+              await AsyncStorage.setItem('user123456', JSON.stringify(user));
+            } catch (error) {
+              // Error retrieving data
+              console.log(error.message);
+            }
+          };
         return user;
     });
 }
-function logout(){
-    AsyncStorage.removeItem('user')
+function  logout (){
+    // AsyncStorage.removeItem('user123456')
+    const deleteUserId = async () => {
+        try {
+          await AsyncStorage.removeItem('user123456');
+        } catch (error) {
+          // Error retrieving data
+          console.log(error.message);
+        }
+      }
 }
 
 function profile_detail(pk){
     
     return axios({
         method: "GET",
-        url: "http://127.0.0.1:8000/api/auth/profile/"+pk
+        url: "http://192.168.1.3:8000/api/auth/profile/"+pk
     })
     .then(Profile=>{
         // console.log(Profile.data);

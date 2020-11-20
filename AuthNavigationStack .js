@@ -3,6 +3,7 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Main from './Main';
 import Search from './screens/search';
+import SignUp from './screens/register';
 const Stack = createStackNavigator();
 
 const AuthNavigationStack = () => {
@@ -15,6 +16,14 @@ const AuthNavigationStack = () => {
          title: 'Login Page',
        }}
      />
+     <Stack.Screen
+       name={"SignUp"}
+       component={SignUp}
+       options={{
+         title: 'SignUp Page',
+       }}
+     />
+     
      <Stack.Screen name='Home' component={Main} />
      <Stack.Screen name='search' component={Search} />
      

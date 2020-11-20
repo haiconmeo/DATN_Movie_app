@@ -6,7 +6,8 @@ import {
   ImageBackground,
   Text,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from "react-native";
 import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import EntypoIcon from "react-native-vector-icons/Entypo";
@@ -15,6 +16,7 @@ import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 const image = { uri: "https://reactjs.org/logo-og.png" };
 function SignUp(props) {
   return (
+    <ScrollView style={{ backgroundColor: '#000' }}>
     <View style={styles.root}>
       <StatusBar barStyle="light-content" backgroundColor="rgba(0,0,0,0)" />
       <View style={styles.background}>
@@ -24,22 +26,6 @@ function SignUp(props) {
           source={require('./../assets/images/1.png')}
         >
           <View style={styles.progressBarColumn}>
-            <View style={styles.progressBar}>
-              <View style={styles.icon2Row}>
-                <IoniconsIcon
-                  name="md-checkmark-circle"
-                  style={styles.icon2}
-                ></IoniconsIcon>
-                <View style={styles.rect4}></View>
-                <EntypoIcon name="time-slot" style={styles.icon3}></EntypoIcon>
-                <View style={styles.rect5}></View>
-              </View>
-              <View style={styles.icon2RowFiller}></View>
-              <FontAwesomeIcon
-                name="circle"
-                style={styles.icon4}
-              ></FontAwesomeIcon>
-            </View>
             <Text style={styles.text3}>CREATE ACCOUNT</Text>
             <View style={styles.form}>
               <View style={styles.nameColumn}>
@@ -88,11 +74,12 @@ function SignUp(props) {
             >
               <Text style={styles.text2}>Continue</Text>
             </TouchableOpacity>
-            <Text style={styles.text4}>Terms &amp; Conditions</Text>
+            
           </View>
         </ImageBackground>
       </View>
     </View>
+    </ScrollView>
   );
 }
 
@@ -184,7 +171,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   nameInput: {
-    height: 30,
+    height: 35,
     color: "rgba(255,255,255,1)",
     fontSize: 14,
     flex: 1,
@@ -206,7 +193,7 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   emailInput: {
-    height: 30,
+    height: 35,
     color: "rgba(255,255,255,1)",
     flex: 1,
     marginRight: 17,
@@ -230,7 +217,7 @@ const styles = StyleSheet.create({
     marginTop: 13
   },
   passwordInput: {
-    height: 30,
+    height: 35,
     color: "rgba(255,255,255,1)",
     flex: 1,
     marginRight: 17,
@@ -252,7 +239,8 @@ const styles = StyleSheet.create({
     borderColor: "rgba(255,255,255,1)",
     borderWidth: 1,
     justifyContent: "center",
-    marginBottom: 56
+    marginBottom: 56,
+    marginTop:14
   },
   text2: {
     width: 66,

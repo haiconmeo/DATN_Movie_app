@@ -25,12 +25,13 @@ const styles = StyleSheet.create({
     flex: 1
   },
   rect: {
+    borderRadius:8,
     top: 0,
     left: 29,
     width: 341,
-    height: 214,
+    height: 240,
     position: "absolute",
-    backgroundColor: "#E6E6E6",
+    backgroundColor: "#c0c0c0",
     marginBottom: 5
   },
   loremIpsum: {

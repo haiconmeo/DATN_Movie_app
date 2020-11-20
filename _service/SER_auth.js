@@ -14,7 +14,7 @@ function login(username,password){
         body:JSON.stringify({username,password})
     };
 
-    return fetch("http://192.168.1.3:8000/api/auth/login/",requestOptions)
+    return fetch("http://192.168.1.212:8000/api/auth/login/",requestOptions)
     .then(handleResponse)
     .then(user=>{
         console.log("oke auth")
@@ -46,7 +46,7 @@ function profile_detail(pk){
     
     return axios({
         method: "GET",
-        url: "http://192.168.1.3:8000/api/auth/profile/"+pk
+        url: "http://192.168.1.212:8000/api/auth/profile/"+pk
     })
     .then(Profile=>{
         // console.log(Profile.data);

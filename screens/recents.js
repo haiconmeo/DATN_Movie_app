@@ -7,7 +7,7 @@ import Item from './Item';
 const Recents = () => {
   0.
   const [data, setData] = useState("");
-  const baseURL = "http://192.168.1.3:8000/api/movie/1";
+  const baseURL = "http://192.168.1.212:8000/api/movie/1";
   useEffect(function () {
     fetch(baseURL)
       .then((e) => e.json())

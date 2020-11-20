@@ -57,7 +57,7 @@ const Home = (props: Props) => {
  
     var next= userrr.user.id
     console.log("id",next)
-    var callAPI= "http://192.168.1.3:8000/api/recommend/"+next
+    var callAPI= "http://192.168.1.212:8000/api/recommend/"+next
  
     try {
       const data = await Axios.get(
@@ -76,7 +76,7 @@ const Home = (props: Props) => {
   const getlistnew = async () => {
  
   
-    var callAPI= "http://192.168.1.3:8000/api/movie_new"
+    var callAPI= "http://192.168.1.212:8000/api/movie_new"
  
     try {
       const data = await Axios.get(

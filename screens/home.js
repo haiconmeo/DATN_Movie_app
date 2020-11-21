@@ -5,7 +5,8 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import LinearGradient from 'react-native-linear-gradient';
 import {useDispatch,useSelector} from 'react-redux';
 import Axios from "axios";
-
+import {Screens} from './../screen_navi';
+import { userAction } from "../_action";
 import PropTypes from 'prop-types';
 // import { userAction } from "../_action";
 import {
@@ -25,11 +26,13 @@ import {
 
 console.disableYellowBox = true;
 
-const Home = (props: Props) => {
+const Home = (props) => {
+  const dispatch = useDispatch();
   const {navigation} = props;
   const [value, onChangeText] = useState();
-  const userrr = useSelector(state=>state.authentication.user);
-  console.log("user_home",userrr)
+  const userrr = useSelector(state=>state.authentication.user_data);
+  const token = useSelector(state=>state.authentication.user);
+  // console.log("manshds->",userrr)
   const [gallery, setgallery] = useState([]);
   const [movie_new, setmovie_new] = useState([]);
   function list_table(listProfile) {
@@ -54,8 +57,8 @@ const Home = (props: Props) => {
     return (result)
   }
   const getlistProfile = async () => {
- 
-    var next= userrr.user.id
+    console.log("manshds",userrr.id)
+    var next= userrr.id
     console.log("id",next)
     var callAPI= "http://192.168.1.212:8000/api/recommend/"+next
  
@@ -75,7 +78,7 @@ const Home = (props: Props) => {
 
   const getlistnew = async () => {
  
-  
+   
     var callAPI= "http://192.168.1.212:8000/api/movie_new"
  
     try {
@@ -92,11 +95,13 @@ const Home = (props: Props) => {
     }
   }
   useEffect(() => {
-
-    getlistProfile(),
-    getlistnew()
-
+    dispatch(userAction.loaduser(token));
   },[]);
+  useEffect(()=>{
+    getlistProfile(),
+
+    getlistnew()
+  },[userrr])
   const [background, setBackground] = useState({
     uri:
       'https://m.media-amazon.com/images/M/MV5BYWZjMjk3ZTItODQ2ZC00NTY5LWE0ZDYtZTI3MjcwN2Q5NTVkXkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SY1000_CR0,0,674,1000_AL_.jpg',
@@ -173,7 +178,7 @@ const Home = (props: Props) => {
                     size={22}
                     color="rgba(255,255,255,0.3)"
                     style={styles.searchBoxIcon}
-                    onPress={() => navigation.navigate('Home',{ screen: 'search',value })}
+                    onPress={() => navigation.navigate(Screens.SEARCH,{value})}
                   />
                 </View>
                 <Text

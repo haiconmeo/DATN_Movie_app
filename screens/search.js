@@ -1,23 +1,28 @@
 import * as React from 'react';
 import { useEffect, useState } from "react";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { StyleSheet, Text, View,  FlatList,TextInput } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native';
 import Item from './Item';
 
 const Search = (props) => {
-    const {data_name} = props
+  const { navigation } = props;
+  const [inputs, setInputs] = useState()
+  const { value } = navigation.state.params;
+  console.log('data ser',value)
+
   const [data, setData] = useState("");
-  const baseURL = "http://192.168.1.3:8000/api/Movie_search";
+  const baseURL = "http://192.168.1.212:8000/api/Movie_search";
   useEffect(function () {
     var formdata = new FormData();
-    formdata.append("name", data_name);
-    
+    formdata.append("name", value);
+    setInputs(value)
+
     var requestOptions = {
       method: 'POST',
       body: formdata,
       redirect: 'follow'
     };
-    fetch(baseURL,requestOptions)
+    fetch(baseURL, requestOptions)
       .then((e) => e.json())
       .then((rep) => setData(rep))
       .catch((err) => {
@@ -29,6 +34,7 @@ const Search = (props) => {
       <View style={styles.searchBoxContainer}>
         <TextInput
           placeholder="Search Movies"
+          value={inputs}
           placeholderTextColor="rgba(255,255,255,0.3)"
           style={styles.SearchBox}
         />
@@ -44,7 +50,7 @@ const Search = (props) => {
       ) : (
           <FlatList
             data={data}
-            renderItem={({ item }) => <Item name={item} />}
+            renderItem={({ item }) => <Item name={item} navigate={navigation} />}
             keyExtractor={(item) => item.id}
           />
         )}

@@ -1,10 +1,13 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image,TouchableOpacity } from "react-native";
+import {Screens} from  './../screen_navi';
 // import { StyleSheet, View, Text, Image } from "react-native";
-export default function Item({ name }) {
-  console.log(name)
+export default function Item( props ) {
+  console.log("detail :",props)
+  const {navigate,name} = props
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} 
+    onPress={() => navigate.navigate(Screens.DETAIL,{name})}>
       <View style={styles.rectStack}>
         <View style={styles.rect}>
           <Text style={styles.loremIpsum}>{name.Movie}</Text>
@@ -17,7 +20,7 @@ export default function Item({ name }) {
           style={styles.image}
         ></Image>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 const styles = StyleSheet.create({

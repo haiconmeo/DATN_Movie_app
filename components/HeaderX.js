@@ -5,12 +5,15 @@ import LogoHeader from "./LogoHeader";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import {userAction} from'./../_action'
 import {useDispatch,useSelector} from 'react-redux'
+import {Screens} from './../screen_navi';
 function HeaderX(props) {
+  const {navigation} = props;
+  console.log("headerX",navigation)
   const dispatch =useDispatch();
   
   function handleChange(e){
     
-    dispatch(userAction.logout());
+    navigation.navigate(Screens.LOGIN)
     
   }
   return (

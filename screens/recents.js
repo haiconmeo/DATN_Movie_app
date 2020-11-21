@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { StyleSheet, Text, View, TouchableOpacity, FlatList,TextInput } from 'react-native';
 import Item from './Item';
+import {Screens} from './../screen_navi';
 
-const Recents = () => {
-  0.
+const Recents = (props) => {
+  const {navigation} = props;
+  const [value, onChangeText] = useState();
   const [data, setData] = useState("");
   const baseURL = "http://192.168.1.212:8000/api/movie/1";
   useEffect(function () {
@@ -23,12 +25,14 @@ const Recents = () => {
           placeholder="Search Movies"
           placeholderTextColor="rgba(255,255,255,0.3)"
           style={styles.SearchBox}
+          onChangeText={text => onChangeText(text)}
         />
         <Ionicons
           name="md-search"
           size={22}
           color="rgba(255,255,255,0.3)"
           style={styles.searchBoxIcon}
+          onPress={() => navigation.navigate(Screens.SEARCH,{value})}
         />
       </View>
       {data === "" ? (
@@ -36,7 +40,7 @@ const Recents = () => {
       ) : (
           <FlatList
             data={data}
-            renderItem={({ item }) => <Item name={item} />}
+            renderItem={({ item }) => <Item name={item} navigate={navigation}/>}
             keyExtractor={(item) => item.id}
           />
         )}

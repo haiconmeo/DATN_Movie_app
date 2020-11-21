@@ -1,45 +1,40 @@
 import React, { Component } from "react";
 import { useState, useEffect } from "react";
-import { StyleSheet, View, StatusBar, Text, TouchableOpacity, ImageBackground, TextInput, ScrollView, Dimensions } from "react-native";
+import { StyleSheet, View,  Text, TouchableOpacity, ImageBackground, TextInput, ScrollView, Dimensions } from "react-native";
 import HeaderX from "../components/HeaderX";
 import {useDispatch,useSelector} from 'react-redux'
-import Svg, { Ellipse } from "react-native-svg";
-import IoniconsIcon from "react-native-vector-icons/Ionicons";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
-import Axios from "axios";
+import axios from "axios";
+import {Screens} from './../screen_navi';
 
 function Settings(props) {
-  async function get_profile(pk){
-    
-    var callAPI= "http://192.168.1.3:8000/api/auth/profile_ID/"+pk
-    const userList = await Axios.get(callAPI)
+  const {navigation} = props;
+  const { inputs } = navigation.state.params;
+  async function handleSubmit(e){
+    e.preventDefault();
+    var callAPI= "http://192.168.1.212:8000/api/auth/profile_ID/"+inputs_2['id']
+    console.log("profile ->",inputs_2)
+    const userList = await axios.put(callAPI,{ 
+    'fistname':inputs_2['fistname'],
+    'lastname':inputs_2['lastname'],
+    'phonenum':inputs_2['phonenum'],
+    'address' :inputs_2['address'],
+    'cmmd'    :inputs_2['cmmd']})
     .then((response) => {
-      if(response.status === 200){
-         return (JSON.stringify(response.data))
-      }
+      navigation.navigate(Screens.PROFILESCREEN)
      })
      .catch((error) => {
        alert(error.response.data)
      })
 }
   const user = useSelector(state=>state.authentication.user);
-  // const profile = profile_detail(user.id)
-  // console.log("user trong setting",profile)
   const { height } = Dimensions.get('window');
-  const [inputs, setInputs] = useState({
-    Firstname: '',
-    LastName: '',
-    Email: '',
-    PhoneNumber: '',
-    Cmnd: '',
-    Email:'',
-    
-  });
-  useEffect(()=>{
-    const profile  =  get_profile(1)
+  const [inputs_2, setinputs_2] = useState(inputs);
+  // useEffect(()=>{
+  //   // const profile  =  get_profile(1)
 
-    console.log("user trong setting",profile.user);
-  },[]);
+  //   console.log("user trong setting");
+  // },[]);
   const [state, setState] = useState({
     screenHeight: 0,
   })
@@ -52,7 +47,7 @@ function Settings(props) {
   const scrollEnabled = state.screenHeight > height;
   return (
     <View>
-      <HeaderX icon2Name="power" style={styles.headerX}></HeaderX>
+      <HeaderX icon2Name="power" style={styles.headerX} navigation={navigation}></HeaderX>
       
       <ScrollView style={{height:height }}
 
@@ -76,7 +71,7 @@ function Settings(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
-                   
+                   value={inputs['user']}
 
                   ></TextInput>
                 </View>
@@ -90,7 +85,7 @@ function Settings(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
-                    onChangeText={(text2) => setInputs(inputs => ({ ...inputs, Firstname: text2 }))}
+                    value={inputs['email']}
 
                   ></TextInput>
                 </View>
@@ -104,7 +99,8 @@ function Settings(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
-                    onChangeText={(text2) => setInputs(inputs => ({ ...inputs, Firstname: text2 }))}
+                    // value={inputs['fistname']}
+                    onChangeText={(text) => setinputs_2(inputs_2 => ({ ...inputs_2, fistname: text }))}
 
                   ></TextInput>
                 </View>
@@ -114,11 +110,11 @@ function Settings(props) {
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
-                    placeholder="Username"
+                    placeholder="Lastname"
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
-                    onChangeText={(text2) => setInputs(inputs => ({ ...inputs, Firstname: text2 }))}
+                    onChangeText={(text2) => setinputs_2(inputs => ({ ...inputs, lastname: text2 }))}
 
                   ></TextInput>
                 </View>
@@ -128,11 +124,11 @@ function Settings(props) {
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
-                    placeholder="Username"
+                    placeholder="Phone number"
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
-                    onChangeText={(text2) => setInputs(inputs => ({ ...inputs, Firstname: text2 }))}
+                    onChangeText={(text2) => setinputs_2(inputs_2 => ({ ...inputs_2, phonenum: text2 }))}
 
                   ></TextInput>
                 </View>
@@ -142,11 +138,11 @@ function Settings(props) {
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
-                    placeholder="Username"
+                    placeholder="Address"
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.usernameInput}
-                    onChangeText={(text2) => setInputs(inputs => ({ ...inputs, Firstname: text2 }))}
+                    onChangeText={(text2) => setinputs_2(inputs_2 => ({ ...inputs_2, address: text2 }))}
 
                   ></TextInput>
                 </View>
@@ -156,11 +152,11 @@ function Settings(props) {
                     style={styles.icon2}
                   ></EvilIconsIcon>
                   <TextInput
-                    placeholder="Password"
+                    placeholder="Cmmd"
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={true}
-                    style={styles.passwordInput}
-                    onChangeText={(text) => setInputs(inputs => ({ ...inputs, LastName: text }))}
+                    style={styles.usernameInput}
+                    onChangeText={(text) => setinputs_2(inputs_2 => ({ ...inputs_2, cmmd: text }))}
                   ></TextInput>
                 </View>
 
@@ -168,7 +164,7 @@ function Settings(props) {
               <View style={styles.usernameColumnFiller}></View>
               <TouchableOpacity
                 // onPress={() => props.navigation.navigate(MainScreen)}
-                // onPress={handleSubmit}
+                onPress={handleSubmit}
                 style={styles.button}
               >
                 <Text style={styles.text2}>Edit Profile</Text>

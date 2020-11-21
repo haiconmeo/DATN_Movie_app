@@ -1,4 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
+import {Screens} from './../screen_navi'
 import {
   StyleSheet,
   View,
@@ -9,12 +11,41 @@ import {
   TouchableOpacity,
   ScrollView
 } from "react-native";
-import IoniconsIcon from "react-native-vector-icons/Ionicons";
-import EntypoIcon from "react-native-vector-icons/Entypo";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 const image = { uri: "https://reactjs.org/logo-og.png" };
 function SignUp(props) {
+  const [inputs, setInputs] = useState({
+    username: '',
+    password: '',
+    email:''
+  });
+  function handleChange(e) {
+
+    const { name, value } = e.target;
+    setInputs(inputs => ({ ...inputs, [name]: value }));
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    if (inputs['username'] && inputs['password']&&inputs['email']) {
+      var formdata = new FormData();
+      
+      formdata.append("username", inputs['username']);
+      formdata.append("email", inputs['email']);
+      formdata.append("password", inputs['password']);
+      var requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+      };
+
+      fetch("http://192.168.1.212:8000/api/auth/register/", requestOptions)
+        .then(response =>props.navigation.navigate(Screens.LOGIN))
+
+        .catch(error => console.log('error', error));
+    }
+
+  }
   return (
     <ScrollView style={{ backgroundColor: '#000' }}>
     <View style={styles.root}>
@@ -39,6 +70,7 @@ function SignUp(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.nameInput}
+                    onChangeText={(text2) => setInputs(inputs => ({ ...inputs, username: text2 }))}
                   ></TextInput>
                 </View>
                 <View style={styles.email}>
@@ -51,6 +83,7 @@ function SignUp(props) {
                     placeholderTextColor="rgba(255,255,255,1)"
                     secureTextEntry={false}
                     style={styles.emailInput}
+                    onChangeText={(text) => setInputs(inputs => ({ ...inputs, email: text }))}
                   ></TextInput>
                 </View>
               </View>
@@ -62,6 +95,7 @@ function SignUp(props) {
                   placeholderTextColor="rgba(255,255,255,1)"
                   secureTextEntry={true}
                   style={styles.passwordInput}
+                  onChangeText={(text) => setInputs(inputs => ({ ...inputs, password: text }))}
                 ></TextInput>
               </View>
             </View>
@@ -69,7 +103,7 @@ function SignUp(props) {
           <View style={styles.progressBarColumnFiller}></View>
           <View style={styles.buttonColumn}>
             <TouchableOpacity
-              onPress={() => props.navigation.navigate("Timeline")}
+              onPress={handleSubmit}
               style={styles.button}
             >
               <Text style={styles.text2}>Continue</Text>

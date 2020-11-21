@@ -3,7 +3,8 @@ import { AsyncStorage } from 'react-native';
 export const userService = {
     login,
     logout,
-    profile_detail
+    profile_detail,
+    load_user_ser
 
 };
 function login(username,password){
@@ -17,26 +18,45 @@ function login(username,password){
     return fetch("http://192.168.1.212:8000/api/auth/login/",requestOptions)
     .then(handleResponse)
     .then(user=>{
-        console.log("oke auth")
-        // AsyncStorage.setItem('user123456', JSON.stringify(user));
-        const saveUserId = async userId => {
-            try {
-              await AsyncStorage.setItem('user123456', JSON.stringify(user));
-            } catch (error) {
-              // Error retrieving data
-              console.log(error.message);
-            }
-          };
-        return user;
+        AsyncStorage.setItem('user123456', JSON.stringify(user.token));
+ 
+              console.log("loiasdasdasdasdasdasd",user.token);
+              return [user.token, user.user];
+
+        
     });
 }
+
+function load_user_ser(token){
+    let headers = {
+        "Content-Type": "application/json",
+    };
+
+    if (token) {
+        headers["Authorization"] = `Token ${token}`;
+    }
+    return fetch("http://192.168.1.212:8000/api/auth/user/", { headers, })
+    .then(handleResponse)
+        .then(res => {
+            if (res.status < 500) {
+                return res.json().then(data => {
+                    console.log("asdasdasd dmm",data)
+                    return { data };
+                })
+            } else {
+                console.log("Server Error!");
+                
+            }
+        })
+
+}
 function  logout (){
-    // AsyncStorage.removeItem('user123456')
+
     const deleteUserId = async () => {
         try {
           await AsyncStorage.removeItem('user123456');
         } catch (error) {
-          // Error retrieving data
+
           console.log(error.message);
         }
       }

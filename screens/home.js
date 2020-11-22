@@ -172,6 +172,8 @@ const Home = (props) => {
                     style={styles.SearchBox}
                     onChangeText={text => onChangeText(text)}
                     value={value}
+                    
+                    // color="rgba(255,255,255,0.3)"
                   />
                   <Ionicons
                     name="md-search"
@@ -215,11 +217,12 @@ const Home = (props) => {
                       size={22}
                       color="#02ad94"
                       style={{ marginLeft: 4 }}
+                      onPress={()=>navigation.navigate(Screens.DETAIL,{name:{Movie:background.name,Year:background.stat,Image:background.image,Content:background.desc}})}
                     />
                   </TouchableOpacity>
                 </View>
                 <View style={{ paddingHorizontal: 14, marginTop: 14 }}>
-                  <Text style={{ color: '#fff', opacity: 0.8, lineHeight: 20 }}>
+                  <Text  numberOfLines={5} style={{ color: '#fff', opacity: 0.8, lineHeight: 20 }}>
                     {background.desc}
                   </Text>
                 </View>
@@ -356,6 +359,7 @@ const styles = StyleSheet.create({
     padding: 12,
     paddingLeft: 20,
     fontSize: 16,
+    color:'white'
   },
   searchBoxIcon: {
     position: 'absolute',

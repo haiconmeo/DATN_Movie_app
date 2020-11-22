@@ -10,7 +10,7 @@ export const userAction={
 
 
 function login(username,password){
-    console.log("oke auth")
+    
     return dispatch=>{
         dispatch(request({username}));
         
@@ -22,6 +22,7 @@ function login(username,password){
                 dispatch(loadUserData(user))
             },
             error => {
+                console.log("oke loi trong action ")
                 dispatch(failure(error.toString()));
                 
             }

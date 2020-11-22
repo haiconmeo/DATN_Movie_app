@@ -12,7 +12,7 @@ const Login = (props) => {
   console.log("loggingIn1", authed)
   const [inputs, setInputs] = useState({
     username: 'Kelli',
-    password: 'e9j6gcrv'
+    password: 'Manhlaix14@'
   });
 
   function handleChange(e) {
@@ -27,6 +27,7 @@ const Login = (props) => {
     if (username && password) { 
 
       dispatch(userAction.login(username, password));
+      console.log("dang nhap sai trong login:",authed)
       if (!authed) {
         navigation.navigate(Screens.HOME)
       }
@@ -48,7 +49,7 @@ const Login = (props) => {
               <View style={styles.logo}>
                 <View style={styles.endWrapperFiller}></View>
                 <View style={styles.text3Column}>
-                  <Text style={styles.text3}>bx</Text>
+                  <Text style={styles.text3}>Login</Text>
                   <View style={styles.rect7}></View>
                 </View>
               </View>
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     color: "rgba(255,255,255,1)",
-    fontSize: 96,
+    fontSize: 35,
     marginBottom: 4
   },
   rect7: {

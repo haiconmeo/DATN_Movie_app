@@ -74,7 +74,7 @@ function profile_detail(pk){
     });
 }
 function handleResponse(response) {
-    console.log("oke loi")
+    console.log("oke loi dang nhap")
     return response.text().then(text => {
         const data = text && JSON.parse(text);
         if (!response.ok) {

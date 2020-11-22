@@ -7,7 +7,7 @@ function LogoHeader(props) {
     <View style={[styles.root, props.style]}>
       <View style={styles.text5Stack}>
         <Center horizontal>
-          <Text style={styles.text5}>bx</Text>
+          <Text style={styles.text5}>Update</Text>
         </Center>
         <View style={styles.rect8}></View>
       </View>
@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
     top: 0,
     color: "rgba(255,255,255,1)",
     position: "absolute",
-    fontSize: 36
+    fontSize: 15,
+    width:50
   },
   rect8: {
     top: 38,

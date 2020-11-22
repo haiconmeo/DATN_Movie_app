@@ -30,7 +30,7 @@ export const authentication = (state = initState, action) =>{
             return {
                 loggedIn:true,
                 user:action.user,
-                fail_login:false
+                fail_login:true
             };
         case userConstants.LOGIN_SUCCESS:
             

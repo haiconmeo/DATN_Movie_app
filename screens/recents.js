@@ -72,6 +72,7 @@ const styles = StyleSheet.create({
     padding: 12,
     paddingLeft: 20,
     fontSize: 16,
+    color:'white'
   },
   searchBoxIcon: {
     position: 'absolute',

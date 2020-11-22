@@ -107,7 +107,7 @@ function handleSubmit(e){
             <View style={styles.logo}>
               <View style={styles.endWrapperFiller}></View>
               <View style={styles.text3Column}>
-                <Text style={styles.text3}>bx</Text>
+                <Text style={styles.text3}>Reset</Text>
                 <View style={styles.rect7}></View>
               </View>
             </View>
@@ -115,14 +115,14 @@ function handleSubmit(e){
               <View style={styles.usernameColumn}>
                 <View style={styles.password}>
                   <EvilIconsIcon
-                    name="user"
+                    name="lock"
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
                     placeholder="new password"
                     name="newpassword"
                     placeholderTextColor="rgba(255,255,255,1)"
-                    secureTextEntry={false}
+                    secureTextEntry={true}
                     style={styles.passwordInput}
                     // value={inputs['newpassword']} onChange={handleChange}
                     onChangeText={(text2) => setInputs(inputs => ({ ...inputs, newpassword: text2 }))}
@@ -134,12 +134,12 @@ function handleSubmit(e){
                     style={styles.icon2}
                   ></EvilIconsIcon>
                   <TextInput
-                    placeholder="new password"
+                    placeholder="re enter"
                     name='re_enter'
                     // value={inputs['re_enter']} onChange={handleChange}
                     onChangeText={(text2) => setInputs(inputs => ({ ...inputs, re_enter: text2 }))}
                     placeholderTextColor="rgba(255,255,255,1)"
-                    secureTextEntry={false}
+                    secureTextEntry={true}
                     style={styles.passwordInput}
                   ></TextInput>
                 </View>
@@ -183,7 +183,7 @@ const styles = StyleSheet.create({
   },
   text3: {
     color: "rgba(255,255,255,1)",
-    fontSize: 96,
+    fontSize: 30,
     marginBottom: 4
   },
   rect7: {

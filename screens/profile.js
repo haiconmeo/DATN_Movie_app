@@ -67,13 +67,14 @@ const ProfileScreen = (props) => {
     } catch (error) {
 
     }
-    // dispatch(userAction.loaduser(token));
-  }, []);
+    
+  }, [navigation.state.params]);
   useEffect(() => {
     getProfile()
 
 
   }, [userrr])
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -82,7 +83,7 @@ const ProfileScreen = (props) => {
         <View style={{ flexDirection: 'row', marginTop: 15 }}>
           <Avatar.Image
             source={{
-              uri: 'https://api.adorable.io/avatars/80/abott@adorable.png',
+              uri: 'https://znews-photo.zadn.vn/w860/Uploaded/aobovhp/2020_03_18/avatar.jpg',
             }}
             size={80}
           />
@@ -90,8 +91,8 @@ const ProfileScreen = (props) => {
             <Title style={[styles.title, {
               marginTop: 15,
               marginBottom: 5,
-            }]}>{inputs['user']}</Title>
-            <Caption style={styles.caption}>{inputs['fistname'], inputs['lastname']}</Caption>
+            }]}>Hello {inputs['user']}</Title>
+            <Caption style={styles.caption}> {inputs['fistname']} {inputs['lastname']}</Caption>
           </View>
         </View>
       </View>
@@ -102,8 +103,8 @@ const ProfileScreen = (props) => {
           <Text style={{ color: "#777777", marginLeft: 20 }}>{inputs['address']}</Text>
         </View>
         <View style={styles.row}>
-          <Icon name="CMND" color="#777777" size={20} />
-          <Text style={{ color: "#777777", marginLeft: 20 }}>{inputs['cmmd']}</Text>
+          <Icon name="phone" color="#777777" size={20} />
+          <Text style={{ color: "#777777", marginLeft: 20 }}>{inputs['phonenum']}</Text>
         </View>
         <View style={styles.row}>
           <Icon name="email" color="#777777" size={20} />
@@ -162,6 +163,7 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // backgroundColor:'#18191a'
   },
   userInfoSection: {
     paddingHorizontal: 30,
@@ -172,9 +174,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   caption: {
-    fontSize: 14,
+    fontSize: 15,
     lineHeight: 14,
     fontWeight: '500',
+    fontWeight: 'bold'
   },
   row: {
     flexDirection: 'row',

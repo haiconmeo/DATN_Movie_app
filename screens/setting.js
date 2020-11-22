@@ -9,6 +9,7 @@ import {Screens} from './../screen_navi';
 
 function Settings(props) {
   const {navigation} = props;
+  const key =  Math.random()
   const { inputs } = navigation.state.params;
   async function handleSubmit(e){
     e.preventDefault();
@@ -21,7 +22,7 @@ function Settings(props) {
     'address' :inputs_2['address'],
     'cmmd'    :inputs_2['cmmd']})
     .then((response) => {
-      navigation.navigate(Screens.PROFILESCREEN)
+      navigation.navigate(Screens.PROFILESCREEN,{key})
      })
      .catch((error) => {
        alert(error.response.data)
@@ -77,7 +78,7 @@ function Settings(props) {
                 </View>
                 <View style={styles.username}>
                   <EvilIconsIcon
-                    name="user"
+                    name="envelope"
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
@@ -134,7 +135,7 @@ function Settings(props) {
                 </View>
                 <View style={styles.username}>
                   <EvilIconsIcon
-                    name="user"
+                    name="location"
                     style={styles.icon22}
                   ></EvilIconsIcon>
                   <TextInput
@@ -148,7 +149,7 @@ function Settings(props) {
                 </View>
                 <View style={styles.password}>
                   <EvilIconsIcon
-                    name="lock"
+                    name="credit-card"
                     style={styles.icon2}
                   ></EvilIconsIcon>
                   <TextInput
@@ -280,7 +281,8 @@ const styles = StyleSheet.create({
     height: 59,
     backgroundColor: "rgba(31,178,204,1)",
     borderRadius: 5,
-    justifyContent: "center"
+    justifyContent: "center",
+    marginTop:30
   },
   text2: {
     color: "rgba(255,255,255,1)",

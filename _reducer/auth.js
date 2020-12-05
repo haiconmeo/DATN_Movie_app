@@ -13,43 +13,53 @@ const user_manh = async () => {
     }
     return null;
   }
+  const initState2 ={
+    loggedIn:false,
+    fail_login:true,
+    user_data: {},
+    errmsg:''
+  }
+//   const initState = user_manh ? {loggedIn:true,user_manh,fail_login:false, user_data: {}}:{};
 
-  const initState = user_manh ? {loggedIn:true,user_manh,fail_login:false, user_data: {}}:{};
-
-export const authentication = (state = initState, action) =>{
+export const authentication = (state = initState2, action) =>{
     switch(action.type) {
         case 'USER_LOADING':
-            return {...state, loggedIn:true };
+            return {...state, loggedIn:true,fail_login:true }
 
         case 'USER_LOADED':
 
-            state = {...state, loggedIn:true,user_manh,fail_login:false};
+            state = {...state, loggedIn:true,fail_login:false}
 
             return state
         case userConstants.LOGIN_REQUEST:
-            return {
+            console.log("LOGIN_REQUEST")
+            // Object.assgin(state.data,data);
+            return {...state,
                 loggedIn:true,
-                user:action.user,
-                fail_login:true
-            };
+                fail_login:true,
+                errmsg:''
+            }
         case userConstants.LOGIN_SUCCESS:
-            
-            return {
+            // Object.assgin(state.data,data);
+            console.log("LOGIN_SUCCESS")
+            return {...state,
                 loggedIn:true,
-                user:action.token,
-                fail_login:false
-            };
+                user_data:action.token,
+                fail_login:false,
+                errmsg:''
+            }
         case userConstants.LOGIN_FAILURE:
-                return {fail_login:true};
+            console.log("LOGIN_FAILURE")
+            return {...state,fail_login:true,user_data:{},errmsg:action.error};
         case 'LOAD_USER_DATA':
             return {
-                user_data: {...action.userdata}
+                ...state,user_data:action.userdata,fail_login:false
             }
         case 'AUTHENTICATION_ERROR':
         case 'LOGIN_FAILED':
         case 'REGISTRATION_FAILED':
         case userConstants.LOGOUT:
-            return{loggedIn:false,authed:false};
+            return{...state,loggedIn:false,fail_login:true,user_data:{},errmsg:''};
         default:
             return state
     }

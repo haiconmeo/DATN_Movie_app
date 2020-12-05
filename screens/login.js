@@ -9,37 +9,48 @@ const { height, width } = Dimensions.get('window');
 const Login = (props) => {
   const { navigation } = props;
   const authed = useSelector(state => state.authentication.fail_login);
+  const errmsg = useSelector(state => state.authentication.errmsg);
   console.log("loggingIn1", authed)
   const [inputs, setInputs] = useState({
     username: 'Kelli',
     password: 'Manhlaix14@'
   });
-
+  const [dem, setdem] =useState(0)
+  const [msg, setmsg] =useState("")
   function handleChange(e) {
 
     const { name, value } = e.target;
     setInputs(inputs => ({ ...inputs, [name]: value }));
   }
-  
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if (username && password) { 
 
-      dispatch(userAction.login(username, password));
+      await  dispatch(userAction.login(username, password));
+      let x = dem+1;
+      setdem(x)
       console.log("dang nhap sai trong login:",authed)
-      if (!authed) {
-        navigation.navigate(Screens.HOME)
-      }
+      
+     
     }
 
   }
+  useEffect(()=>{
+    if(authed===false){
+      navigation.navigate(Screens.HOME)
+      setmsg("")
+    }
+    if (errmsg!==''){
+      setmsg("Incorrect username or password")
+    }
+  },[authed, errmsg])
   const { username, password } = inputs;
   const dispatch = useDispatch();
   return (
     <ScrollView style={{ backgroundColor: 'red',flex:1 }}>
       <View style={styles.root}>
-        {/* <StatusBar barStyle="light-content" backgroundColor="rgba(0,0,0,0)" /> */}
+        
           <ImageBackground
             style={styles.rect}
             imageStyle={styles.rect_imageStyle}
@@ -85,6 +96,7 @@ const Login = (props) => {
                   </View>
                 </View>
                 <View style={styles.usernameColumnFiller}></View>
+                <Text>{msg}</Text>
                 <TouchableOpacity
                   onPress={handleSubmit}
                   style={styles.button}

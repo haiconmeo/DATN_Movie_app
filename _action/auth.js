@@ -23,7 +23,7 @@ function login(username,password){
             },
             error => {
                 console.log("oke loi trong action ")
-                dispatch(failure(error.toString()));
+                dispatch(failure(error));
                 
             }
         );

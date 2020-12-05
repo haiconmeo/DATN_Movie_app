@@ -5282,6 +5282,11 @@ react-native-anchor-carousel@^3.1.2:
   dependencies:
     prop-types "^15.5.10"
 
+react-native-autocomplete-input@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-autocomplete-input/-/react-native-autocomplete-input-4.2.0.tgz#fcfc3d2f19134d4c3394a4e6a5aae13d8c4c9129"
+  integrity sha512-bLZ9FO3NwcqYY3r6hefEEC4VW45L97kXuCyAqKXW1SJkkG/pGcen6zLq3SMFgoQuG3ryrO/ohz7gme7hFwzjoQ==
+
 react-native-elements@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-2.0.0.tgz#eebe36c3250808ebd4a7e9dcf97a666fb7a20930"

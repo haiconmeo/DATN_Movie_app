@@ -11,7 +11,7 @@ const Search = (props) => {
   console.log('data ser',value)
 
   const [data, setData] = useState("");
-  const baseURL = "http://192.168.1.212:8000/api/Movie_search";
+  const baseURL = "http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/Movie_search";
   useEffect(function () {
     var formdata = new FormData();
     formdata.append("name", value);

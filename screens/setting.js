@@ -13,7 +13,7 @@ function Settings(props) {
   const { inputs } = navigation.state.params;
   async function handleSubmit(e){
     e.preventDefault();
-    var callAPI= "http://192.168.1.212:8000/api/auth/profile_ID/"+inputs_2['id']
+    var callAPI= "http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/auth/profile_ID/"+inputs_2['id']
     console.log("profile ->",inputs_2)
     const userList = await axios.put(callAPI,{ 
     'fistname':inputs_2['fistname'],

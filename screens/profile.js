@@ -44,7 +44,7 @@ const ProfileScreen = (props) => {
     console.log("manshds", userrr.id)
     var next = userrr.id
     console.log("id", next)
-    var callAPI = "http://192.168.1.212:8000/api/auth/profile_ID/" + next
+    var callAPI = "http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/auth/profile_ID/" + next
 
     try {
       const data = await Axios.get(

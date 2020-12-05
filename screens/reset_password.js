@@ -51,7 +51,7 @@ function handleSubmit(e){
             // console.log("Mật khẩu bạn nhập không khớp!")
         }
         else{
-          axios.put('http://192.168.1.212:8000/api/change_pass', {
+          axios.put('http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/change_pass', {
             username: inputs['username'],
             password: inputs['newpassword']
           })

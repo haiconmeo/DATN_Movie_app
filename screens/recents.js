@@ -9,7 +9,7 @@ const Recents = (props) => {
   const {navigation} = props;
   const [value, onChangeText] = useState();
   const [data, setData] = useState("");
-  const baseURL = "http://192.168.1.212:8000/api/movie/1";
+  const baseURL = "http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/movie/1";
   useEffect(function () {
     fetch(baseURL)
       .then((e) => e.json())

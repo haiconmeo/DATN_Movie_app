@@ -39,7 +39,7 @@ function SignUp(props) {
         redirect: 'follow'
       };
 
-      fetch("http://192.168.1.212:8000/api/auth/register/", requestOptions)
+      fetch("http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/auth/register/", requestOptions)
         .then(response =>props.navigation.navigate(Screens.LOGIN))
 
         .catch(error => console.log('error', error));

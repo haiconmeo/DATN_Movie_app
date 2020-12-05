@@ -15,7 +15,7 @@ function login(username,password){
         body:JSON.stringify({username,password})
     };
 
-    return fetch("http://192.168.1.212:8000/api/auth/login/",requestOptions)
+    return fetch("http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/auth/login/",requestOptions)
     .then(handleResponse)
     .then(user=>{
         AsyncStorage.setItem('user123456', JSON.stringify(user.token));
@@ -35,7 +35,7 @@ function load_user_ser(token){
     if (token) {
         headers["Authorization"] = `Token ${token}`;
     }
-    return fetch("http://192.168.1.212:8000/api/auth/user/", { headers, })
+    return fetch("http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/auth/user/", { headers, })
     .then(handleResponse)
         .then(res => {
             if (res.status < 500) {
@@ -66,7 +66,7 @@ function profile_detail(pk){
     
     return axios({
         method: "GET",
-        url: "http://192.168.1.212:8000/api/auth/profile/"+pk
+        url: "http://django-api.eba-jmjspmms.ap-southeast-1.elasticbeanstalk.com/api/auth/profile/"+pk
     })
     .then(Profile=>{
         // console.log(Profile.data);
